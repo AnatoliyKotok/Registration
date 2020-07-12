@@ -53,6 +53,19 @@ public:
 		if (password.size() < 8) {
 			throw PasswordIncorect("Password contains less than 8 characters");
 		}
+		bool found = false;
+		for (size_t i = 0; i < password.length(); i++)
+		{
+			if (password[i] >= 'A' && password[i] <= 'Z') {
+				found = true;
+			}
+			if (password[i] >= '0' && password[i] <= '9') {
+				found = true;
+			}
+		}
+		if (found == false) {
+			throw PasswordIncorect("The password must contain letters and numbers");
+		}
 	}
 	void registration(User users) {
 		try {
